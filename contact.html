@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidenav.css">
+    <link rel="stylesheet" href="contact.css">
+    <script src="js/contact.js"></script>
+</head>
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">HOME</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="#">Nix</a>
+        <a href="#">Nix</a>
+    </div>
+      
+    <!-- Use any element to open the sidenav -->
+    <span onclick="openNav()">
+        <div id="openMenu" class="openmenu">
+            <a href="#" id="menu"></a>
+        </div>
+    </span>
+
+<div class="container">
+    <div class="contact-info">
+        <p><strong>Name:</strong>Peter Heineke</p>
+        <p><strong>Hobbies:</strong>
+            <ul>
+                <li>Zocken 🕹️</li>
+                <li>Programmieren ⌨️</li>
+                
+                <li>Bis auf weiteres deprecated Hobbies:
+                    <ul>
+                    <li>Fahrrad fahren 🚲</li>
+                    <li>Inline- und Ice-Skaten 🛼⛸️</li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </p>
+        <p><strong>Telefon:</strong> Ihre Telefonnummer</p>
+        <p><strong>E-Mail:</strong> Ihre E-Mail-Adresse</p>
+        <p><strong>Website:</strong> <a href="https://www.ihrewebsite.com">www.ihrewebsite.com</a></p>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://discord.com" class="zoom">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-round-color-icon.png" alt="Discord">
+        </a>
+        <a href="https://steamcommunity.com/id/rxr4ge" class="zoom">
+            <img src="src/steam-icon.png" alt="Steam">
+        </a>
+        <a href="https://www.instagram.com" class="zoom">
+            <img src="src/instagram-icon.webp" alt="Instagram">
+        </a>
+        <a href="https://www.reddit.com/user/BlauBeerGaming/" class="zoom">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/snapchat-square-color-icon.png" alt="Snapchat">
+        </a>
+        <a href="https://www.reddit.com/user/BlauBeerGaming/" class="zoom">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/reddit-icon.png" alt="Reddit">
+        </a>
+        <!-- Weitere Social-Media-Logos und Links hier hinzufügen -->
+    </div>
+    <div class="footer">
+        <p>Swipe nach rechts oder links :)</p>
+    </div>
+</div>
+<script>
+    // JavaScript, um das größere Bild beim Hover anzuzeigen
+    document.querySelector('.thumbnail').addEventListener('mouseenter', function() {
+        console.log("on icon")
+        document.querySelector('.enlarged').style.display = 'block';
+    });
+    document.querySelector('.thumbnail').addEventListener('mouseleave', function() {
+        console.log("off icon")
+        document.querySelector('.enlarged').style.display = 'none';
+    });
+</script>
+<!-- https://huggingface.co/docs/transformers.js/tutorials/vanilla-js -->
+</body>
+</html>

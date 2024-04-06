@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildhover-Beispiel</title>
+    <style>
+        /* Stile für die Bilder */
+        .thumbnail {
+            position: relative;
+            display: inline-block;
+        }
+        .thumbnail img {
+            width: 30px; /* Breite des ursprünglichen Bildes */
+            height: auto; /* Automatische Anpassung der Höhe */
+            transition: transform 0.5s;
+        }
+        .thumbnail:hover img {
+            transform: scale(1.2); /* Vergrößern des Bildes beim Hover */
+        }
+        /* Stile für das größere Bild */
+        .enlarged {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail">
+        <!-- Kleines Bild -->
+        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-round-color-icon.png" alt="Kleines Bild">
+        <!-- Größeres Bild -->
+        <div class="enlarged">
+            <img src="steam_minipfp.gif" alt="Größeres Bild">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript, um das größere Bild beim Hover anzuzeigen
+        document.querySelector('.thumbnail').addEventListener('mouseenter', function() {
+            console.log("on icon")
+            document.querySelector('.enlarged').style.display = 'block';
+        });
+        document.querySelector('.thumbnail').addEventListener('mouseleave', function() {
+            console.log("off icon")
+            document.querySelector('.enlarged').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

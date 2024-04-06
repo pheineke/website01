@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swipe Info Page</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      right: -250px; /* Änderung der Position auf der rechten Seite */
+      width: 250px;
+      height: 100%;
+      background: #ccc;
+      transition: right 0.3s ease; /* Übergang auf right */
+    }
+
+    #main-content {
+      padding-right: 20px; /* Anpassung des rechten Paddings */
+      height: 100%;
+    }
+
+    .swipeable {
+      touch-action: pan-y;
+    }
+  </style>
+</head>
+<body>
+
+<div id="sidebar" class="swipeable">
+  <h2>Info Page</h2>
+  <p>This is the info page content.</p>
+</div>
+
+<div id="main-content">
+  <h1>Swipe to Show Info Page</h1>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const mainContent = document.getElementById('main-content');
+  let startX;
+  let isOpen = false;
+
+  mainContent.addEventListener('touchstart', touchStart, false);
+  mainContent.addEventListener('touchmove', touchMove, false);
+  window.addEventListener('scroll', closeMenuOnScroll, false);
+
+  function touchStart(event) {
+    startX = event.touches[0].clientX;
+  }
+
+  function touchMove(event) {
+    if (isOpen && deltaX < 0) {
+        sidebar.style.right = '-250px'; // Änderung von left zu right
+        isOpen = false;
+    } else {
+        const currentX = event.touches[0].clientX;
+        const deltaX = startX - currentX;
+
+        if (deltaX < 50 && deltaX > 0) { // Änderung des Vorzeichens
+        sidebar.style.right = '0'; // Änderung von left zu right
+        isOpen = true;
+        }
+    }
+  }
+
+  function closeMenuOnScroll() {
+    if (isOpen && window.scrollY > 0) {
+      sidebar.style.right = '-250px'; // Änderung von left zu right
+      isOpen = false;
+    }
+  }
+</script>
+
+</body>
+</html>
