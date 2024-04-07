@@ -1,13 +1,21 @@
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    if (window.innerWidth > window.innerHeight) {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    } else {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
   }
   
   /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
   function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    if (window.innerWidth > window.innerHeight) {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    } else {
+      document.getElementById("mySidenav").style.width = "0";
+    }
   } 
 
 document.addEventListener('touchstart', handleTouchStart, false);        
@@ -41,19 +49,11 @@ function handleTouchMove(evt) {
                                                                          
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
-            closeNav();
-            navStatus = 0;
+          closeNav();
+          navStatus = 0
         } else {
-            
-            if (navStatus == 1) {
-                console.log("here")
-                location.href = "index.html";
-            } else {
-                console.log("here0", navStatus)
-                openNav();
-                navStatus = 1;
-            }
-          
+          openNav();
+          navStatus = 1
         }                       
     } else {
         if ( yDiff > 0 ) {

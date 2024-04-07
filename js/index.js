@@ -1,4 +1,6 @@
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+let navStatus = 0;
+
 function openNav() {
     if (window.innerWidth > window.innerHeight) {
       document.getElementById("mySidenav").style.width = "250px";
@@ -6,24 +8,37 @@ function openNav() {
     } else {
       document.getElementById("mySidenav").style.width = "250px";
     }
+    navStatus = 1;
   }
   
-  /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-  function closeNav() {
-    if (window.innerWidth > window.innerHeight) {
-      document.getElementById("mySidenav").style.width = "0px";
-      document.getElementById("main").style.marginLeft = "0";
-    } else {
-      document.getElementById("mySidenav").style.width = "0";
-    }
-  } 
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  if (window.innerWidth > window.innerHeight) {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  } else {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  navStatus = 0;
+} 
 
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
+window.addEventListener('resize', function(event) {
+  if (navStatus != 0) {
+    document.getElementById("main").style.transition = "0s";
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    navStatus = 0;
+    document.getElementById("main").style.transition = "0.3s";
+  }
+  
+
+});
+
 
 var xDown = null;                                                        
 var yDown = null;
-var navStatus = null;
 
 function getTouches(evt) {
   return evt.touches ||             // browser API
@@ -49,16 +64,10 @@ function handleTouchMove(evt) {
                                                                          
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
-          document.getElementById("main").style.marginRight = "250px";
-          if (navStatus == 1) {
-            closeNav();
-            navStatus = 0
-          } else {
-            // left swipe
-          }
+          closeNav();
+          
         } else {
           openNav();
-          navStatus = 1
         }                       
     } else {
         if ( yDiff > 0 ) {

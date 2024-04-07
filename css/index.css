@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 16%;
+    padding: 5%;
     background-color: #f0f0f0;
     height: auto; /* Höhe des sichtbaren Bereichs */
     width: auto; /* Breite des sichtbaren Bereichs */
@@ -10,7 +10,7 @@ body {
 .container {
     flex:auto;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 30px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -23,6 +23,10 @@ h1 {
 
 .contact-info {
     margin-top: 20px;
+}
+
+.contact-info ul {
+    position: center;
 }
 
 .contact-info p {
