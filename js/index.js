@@ -1,82 +1,35 @@
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-let navStatus = 0;
+function sendData() {
+    var textInput = document.getElementById("textInput").value;
+    var outputDiv = document.getElementById("output");
 
-function openNav() {
-    if (window.innerWidth > window.innerHeight) {
-      document.getElementById("mySidenav").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
-    } else {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
-    navStatus = 1;
-  }
-  
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-  if (window.innerWidth > window.innerHeight) {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-  } else {
-    document.getElementById("mySidenav").style.width = "0";
-  }
-  navStatus = 0;
-} 
+    // AJAX request to send data to server
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:3000/new", true); // Hier wird die IP-Adresse und der Port des Servers angegeben
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Server response
+            var response = JSON.parse(xhr.responseText);
+            outputDiv.innerHTML += "<p>" + response.text + "</p>";
+        }
+    };
+    xhr.send(JSON.stringify({ text: textInput }));
+}
 
-document.addEventListener('touchstart', handleTouchStart, false);        
-document.addEventListener('touchmove', handleTouchMove, false);
-window.addEventListener('resize', function(event) {
-  if (navStatus != 0) {
-    document.getElementById("main").style.transition = "0s";
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-    navStatus = 0;
-    document.getElementById("main").style.transition = "0.3s";
-  }
-  
+window.onload = function() {
+    var outputDiv = document.getElementById("output");
 
-});
-
-
-var xDown = null;                                                        
-var yDown = null;
-
-function getTouches(evt) {
-  return evt.touches ||             // browser API
-         evt.originalEvent.touches; // jQuery
-}                                                     
-                                                                         
-function handleTouchStart(evt) {
-    const firstTouch = getTouches(evt)[0];                                      
-    xDown = firstTouch.clientX;                                      
-    yDown = firstTouch.clientY;                                      
-};                                                
-                                                                         
-function handleTouchMove(evt) {
-    if ( ! xDown || ! yDown ) {
-        return;
-    }
-
-    var xUp = evt.touches[0].clientX;                                    
-    var yUp = evt.touches[0].clientY;
-
-    var xDiff = xDown - xUp;
-    var yDiff = yDown - yUp;
-                                                                         
-    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
-        if ( xDiff > 0 ) {
-          closeNav();
-          
-        } else {
-          openNav();
-        }                       
-    } else {
-        if ( yDiff > 0 ) {
-            /* down swipe */ 
-        } else { 
-            /* up swipe */
-        }                                                                 
-    }
-    /* reset values */
-    xDown = null;
-    yDown = null;                                             
+    // AJAX request to fetch data from server
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:3000/history", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Server response
+            var response = JSON.parse(xhr.responseText);
+            response.texts.forEach(function(text) {
+                outputDiv.innerHTML += "<p>" + text + "</p>";
+            });
+        }
+    };
+    xhr.send();
 };
