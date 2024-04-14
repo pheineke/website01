@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = 555555;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -21,5 +21,5 @@ app.get('/history', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server läuft auf http://localhost:${port}`);
+    console.log(`Server läuft auf http://linda.rhrk.uni-kl.de:${port}`);
 });
