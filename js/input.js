@@ -4,7 +4,7 @@ function sendData() {
 
     // AJAX request to send data to server
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://linda.rhrk.uni-kl.de:55555/new", true); // Hier wird die IP-Adresse und der Port des Servers angegeben
+    xhr.open("POST", "https://linda.rhrk.uni-kl.de:55555/new", true); // Hier wird die IP-Adresse und der Port des Servers angegeben
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -21,7 +21,7 @@ window.onload = function() {
 
     // AJAX request to fetch data from server
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://linda.rhrk.uni-kl.de:55555/history", true);
+    xhr.open("GET", "https://linda.rhrk.uni-kl.de:55555/history", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Server response
