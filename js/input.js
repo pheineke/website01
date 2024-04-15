@@ -21,7 +21,7 @@ window.onload = function() {
 
     // AJAX request to fetch data from server
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://linda.rhrk.uni-kl.de:55555/history", true); // Hier wird die IP-Adresse und der Port des Servers angegeben
+    xhr.open("GET", "https://131.246.119.65:55555/history", true); // Hier wird die IP-Adresse und der Port des Servers angegeben
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Server response
