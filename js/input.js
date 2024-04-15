@@ -2,9 +2,9 @@ function sendData() {
     var textInput = document.getElementById("textInput").value;
     var outputDiv = document.getElementById("output");
 
-    // AJAX request to send data to proxy server
+    // AJAX request to send data to server
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://linda.rhrk.uni-kl.de:55556/new", true); // Proxy-Server URL
+    xhr.open("POST", "https://linda.rhrk.uni-kl.de:55555/new", true); // Hier wird die IP-Adresse und der Port des Servers angegeben
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -19,9 +19,9 @@ function sendData() {
 window.onload = function() {
     var outputDiv = document.getElementById("output");
 
-    // AJAX request to fetch data from proxy server
+    // AJAX request to fetch data from server
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://linda.rhrk.uni-kl.de:55556/history", true); // Proxy-Server URL
+    xhr.open("GET", "https://linda.rhrk.uni-kl.de:55555/history", true); // Hier wird die IP-Adresse und der Port des Servers angegeben
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Server response

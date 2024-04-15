@@ -1,28 +1,34 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const httpProxy = require('http-proxy');
+const https = require('https');
+const fs = require('fs');
 
 const app = express();
-const port = 55556; // Ändere den Port auf den gewünschten Wert
+const port = 55555;
 
 app.use(bodyParser.json());
 app.use(cors());
 
-// Konfiguriere den Proxy
-const proxy = httpProxy.createProxyServer();
+let texts = [];
 
-// Proxy-Route für POST-Anfragen
 app.post('/new', (req, res) => {
-    proxy.web(req, res, { target: 'http://localhost:55555' }); // Leite die Anfrage an den Node.js-Server weiter
+    const text = req.body.text;
+    texts.push(text);
+    res.json({ status: 'success', text: text });
 });
 
-// Proxy-Route für GET-Anfragen
 app.get('/history', (req, res) => {
-    proxy.web(req, res, { target: 'http://localhost:55555' }); // Leite die Anfrage an den Node.js-Server weiter
+    res.json({ texts: texts });
 });
 
-// Starte den Proxy-Server
-app.listen(port, () => {
-    console.log(`Proxy-Server läuft auf http://localhost:${port}`);
+// Lade das SSL-Zertifikat und den privaten Schlüssel
+const options = {
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+};
+
+// Erstelle den HTTPS-Server
+https.createServer(options, app).listen(port, () => {
+    console.log(`Server läuft auf https://linda.rhrk.uni-kl.de:${port}`);
 });
