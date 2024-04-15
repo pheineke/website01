@@ -1,25 +1,28 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const httpProxy = require('http-proxy');
 
 const app = express();
-const port = 55555;
+const port = 55556; // Ändere den Port auf den gewünschten Wert
 
 app.use(bodyParser.json());
 app.use(cors());
 
-let texts = [];
+// Konfiguriere den Proxy
+const proxy = httpProxy.createProxyServer();
 
+// Proxy-Route für POST-Anfragen
 app.post('/new', (req, res) => {
-    const text = req.body.text;
-    texts.push(text);
-    res.json({ status: 'success', text: text });
+    proxy.web(req, res, { target: 'http://localhost:55555' }); // Leite die Anfrage an den Node.js-Server weiter
 });
 
+// Proxy-Route für GET-Anfragen
 app.get('/history', (req, res) => {
-    res.json({ texts: texts });
+    proxy.web(req, res, { target: 'http://localhost:55555' }); // Leite die Anfrage an den Node.js-Server weiter
 });
 
+// Starte den Proxy-Server
 app.listen(port, () => {
-    console.log(`Server läuft auf http://0.0.0.0:${port}`);
+    console.log(`Proxy-Server läuft auf http://localhost:${port}`);
 });
