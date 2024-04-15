@@ -21,5 +21,5 @@ app.get('/history', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server läuft auf https://linda.rhrk.uni-kl.de:${port}`);
+    console.log(`Server läuft auf http://0.0.0.0:${port}`);
 });
