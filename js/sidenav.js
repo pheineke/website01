@@ -25,6 +25,11 @@ function closeNav() {
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
 window.addEventListener('resize', function(event) {
+  if (window.innerWidth > window.innerHeight) {
+    document.getElementById("body").style.padding = "5%";
+  } else {
+    document.getElementById("body").style.padding = "2%";
+  }
   if (navStatus != 0) {
     document.getElementById("main").style.transition = "0s";
     document.getElementById("mySidenav").style.width = "0";
