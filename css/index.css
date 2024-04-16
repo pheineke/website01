@@ -82,3 +82,9 @@ button:hover {
 #output {
     margin-top: 20px;
 }
+
+.comment_time {
+    background-color: #22bbf2;
+    text-align: center;
+    display: inline-block;
+}
