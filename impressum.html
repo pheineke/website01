@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/sidenav.css">
+    <script src="js/sidenav.js"></script>
+</head>
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">HOME</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="#">Nix</a>
+        <a href="#">Nix</a>
+    </div>
+      
+    <!-- Use any element to open the sidenav -->
+    <span onclick="openNav()">
+        <div id="openMenu" class="openmenu">
+            <a href="#" id="menu"></a>
+        </div>
+    </span>
+
+    <div id="main">
+        <div class="container">
+            <h3>Impressum / Disclaimer</h3>
+
+            <p>Dies ist ein Projekt in stetiger Entwicklung.</p>
+
+            Ich bitte deshalb darum rücksicht zu nehmen, falls durch dritte Inhalte auf meiner Website erscheinen,
+            wie zum Beispiel durch einen möglichen missbrauchen der Eingabefunktionen oder noch nicht gefixten Bugs oder Funktionen, wo ich noch nicht alles bedacht habe,
+            um die Website so sicher wie möglich zu machen.
+        </div>
+    </div>
+
+
+<script>
+    // JavaScript, um das größere Bild beim Hover anzuzeigen
+    document.querySelector('.thumbnail').addEventListener('mouseenter', function() {
+        console.log("on icon")
+        document.querySelector('.enlarged').style.display = 'block';
+    });
+    document.querySelector('.thumbnail').addEventListener('mouseleave', function() {
+        console.log("off icon")
+        document.querySelector('.enlarged').style.display = 'none';
+    });
+</script>
+<!-- https://huggingface.co/docs/transformers.js/tutorials/vanilla-js -->
+</body>
+</html>
