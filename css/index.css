@@ -81,10 +81,25 @@ button:hover {
 }
 #output {
     margin-top: 20px;
+    word-wrap: break-word; /* Zeilenumbruch innerhalb von Wörtern */
 }
 
 .comment_time {
     background-color: #22bbf2;
+    padding: 3px;
     text-align: center;
     display: inline-block;
+    border-radius: 3px;
+}
+.comment_user {
+    margin-left: 4px; /* Abstand zwischen comment_time und comment_user */
+    background-color: #22f260;
+    padding: 3px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 3px;
+}
+.comment_content {
+    margin-left: 4px; /* Abstand zwischen comment_time und comment_user */
+    background-color: #813131;
 }
