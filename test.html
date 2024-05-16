@@ -9,4 +9,21 @@
   <body>
     <canvas id="glcanvas" width="640" height="480"></canvas>
   </body>
+  <script>
+    // Canvas-Element auswählen
+    var canvas = document.getElementById('glcanvas');
+    
+    // Funktion zum Anpassen der Größe definieren
+    function resizeCanvas() {
+        // Die Größe des Canvas auf die Breite und Höhe der angezeigten Seite setzen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    
+    // Die Größe des Canvas zuerst einrichten
+    resizeCanvas();
+    
+    // Eventlistener für das Ändern der Größe des Browserfensters hinzufügen
+    window.addEventListener('resize', resizeCanvas);
+</script>
 </html>
